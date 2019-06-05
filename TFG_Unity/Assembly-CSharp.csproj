@@ -51,9 +51,11 @@
      <Compile Include="Assets\Scripts\GameOverTextControl.cs" />
      <Compile Include="Assets\Scripts\HomeInteractiveScript.cs" />
      <Compile Include="Assets\Scripts\HomeTextScript.cs" />
+     <Compile Include="Assets\Scripts\LvlControlScript.cs" />
      <Compile Include="Assets\Scripts\LvlManager.cs" />
      <Compile Include="Assets\Scripts\OptionsScript.cs" />
      <Compile Include="Assets\Scripts\OptionsTextControl.cs" />
+     <Compile Include="Assets\Scripts\PushElementScript.cs" />
      <Compile Include="Assets\Scripts\SelectLevelScript.cs" />
      <Compile Include="Assets\Scripts\SelectLevelTextControl.cs" />
  <Reference Include="UnityEngine.UI">
