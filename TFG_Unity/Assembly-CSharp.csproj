@@ -49,6 +49,7 @@
      <Compile Include="Assets\Scripts\ClosePanelScript.cs" />
      <Compile Include="Assets\Scripts\GameOverScript.cs" />
      <Compile Include="Assets\Scripts\GameOverTextControl.cs" />
+     <Compile Include="Assets\Scripts\GiroscopiScript.cs" />
      <Compile Include="Assets\Scripts\HomeInteractiveScript.cs" />
      <Compile Include="Assets\Scripts\HomeTextScript.cs" />
      <Compile Include="Assets\Scripts\KeepElementScript.cs" />

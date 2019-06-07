@@ -33,7 +33,7 @@ public class HomeInteractiveScript : MonoBehaviour {
 		} else if (gameObject.tag == "Options") {
 			SceneManager.LoadScene ("Options");
 		} else if (gameObject.tag == "Play") {
-			//SceneManager.LoadScene ("level"+lvl);
+			SceneManager.LoadScene ("Lvl-"+lvl);
 		} else if (gameObject.tag == "Selectlvl") {
 			SceneManager.LoadScene ("SelectLevel");
 		}

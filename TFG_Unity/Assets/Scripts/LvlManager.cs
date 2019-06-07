@@ -19,14 +19,13 @@ public class LvlManager : MonoBehaviour {
 	}
 
 	public void loadID (int i) {
-		lvl = i;
+		lvl = i+1;
 		for(int j = 0; j < btnlvl.Length; j++)
 			btnlvl [j].GetComponent<Image> ().color = j.Equals(i) ? Color.gray : Color.white;
 		score.text = bs [i].ToString ();
 	}
 
 	public void loadLvl(){
-		Debug.Log("Jugar nivell " + lvl);
-		SceneManager.LoadScene ("Lvl-"+(lvl+1));
+		SceneManager.LoadScene ("Lvl-"+lvl);
 	}
 }

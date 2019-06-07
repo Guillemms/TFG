@@ -7,7 +7,7 @@ using UnityEngine;
 public class LvlControlScript : MonoBehaviour {
 
 	string sceneName;
-	public GameObject P1, P2, P3, P4, P5, P6, C1, C2, C3, C4, C5, C6;
+	public GameObject P1, P2, P3, P4, P5, P6, C1, C2, C3, C4, C5, C6, giro;
 	int lvlScene;
 	float time=1.0f;
 	int ins=1;
@@ -18,6 +18,8 @@ public class LvlControlScript : MonoBehaviour {
 			lvlScene = 1;
 		} else if (sceneName=="Lvl-2") {
 			lvlScene = 2;
+		} else if (sceneName=="Lvl-3") {
+			lvlScene = 3;
 		}
 	}
 
@@ -28,7 +30,6 @@ public class LvlControlScript : MonoBehaviour {
 				Instantiate (P1, new Vector2 (0.0f, 0.0f), transform.rotation);
 				ins++;
 				time = 1.0f;
-				Debug.Log (ins);
 			} else if (time <= 0.0f && ins == 2) { 
 				Instantiate (P4, new Vector2 (-1.83f, 3.22f), transform.rotation);
 				ins++;
@@ -51,7 +52,6 @@ public class LvlControlScript : MonoBehaviour {
 				Instantiate (C6, new Vector2 (1.0f, 0.0f), transform.rotation);
 				ins++;
 				time = 1.0f;
-				Debug.Log (ins);
 			} else if (time <= 0.0f && ins == 2) { 
 				Instantiate (C2, new Vector2 (-1.83f, 2.22f), transform.rotation);
 				ins++;
@@ -65,6 +65,12 @@ public class LvlControlScript : MonoBehaviour {
 				ins++;
 				time = 1.0f;
 			} else if (time <= 0.0f && ins == 5) { 
+				SceneManager.LoadScene ("GameOver");
+			}
+			break;
+
+		case 3:
+			if (giro == null) {
 				SceneManager.LoadScene ("GameOver");
 			}
 			break;
