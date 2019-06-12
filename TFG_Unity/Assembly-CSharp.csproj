@@ -58,6 +58,7 @@
      <Compile Include="Assets\Scripts\OptionsScript.cs" />
      <Compile Include="Assets\Scripts\OptionsTextControl.cs" />
      <Compile Include="Assets\Scripts\PushElementScript.cs" />
+     <Compile Include="Assets\Scripts\RoadElementScript.cs" />
      <Compile Include="Assets\Scripts\SelectLevelScript.cs" />
      <Compile Include="Assets\Scripts\SelectLevelTextControl.cs" />
  <Reference Include="UnityEngine.UI">

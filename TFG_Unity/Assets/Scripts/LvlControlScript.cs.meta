@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: af409f25f9bb4b84c82913aa25ccde63
-timeCreated: 1559733096
+timeCreated: 1560342703
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
@@ -17,6 +17,43 @@ MonoImporter:
   - C4: {fileID: 1559790960954900, guid: 9f5216a1c4001e8498107a8690dd38d0, type: 2}
   - C5: {fileID: 1800344918554776, guid: a2c1dfe0a203d6542bf034b71267b109, type: 2}
   - C6: {fileID: 1664007773291064, guid: 5a866fe27e7e7914193c7ccd5441d92f, type: 2}
+  - giro: {fileID: 1757649923904342, guid: 79ca98a9bb7533d4bbd14d90719668df, type: 2}
+  - L1_1: {fileID: 1739441685565098, guid: 5bca7e7e0d1a7ee4ea0db2c5547af440, type: 2}
+  - L1_2: {fileID: 1599219781438332, guid: 94d1fe18831f9804c94c77f7ffc3abf9, type: 2}
+  - L1_3: {fileID: 1621206400474760, guid: 562ed3c5e82b88e48b7bde259d5276cc, type: 2}
+  - L1_4: {fileID: 1820340450722334, guid: 6a339a846ecba064486a0f2e36e1192f, type: 2}
+  - L1_5: {fileID: 1491236106720100, guid: e52d9b29715d61c489caa615241566c2, type: 2}
+  - L1_6: {fileID: 1667608128101136, guid: f71413621af8ddb44a93d1da4a970630, type: 2}
+  - L2_1: {fileID: 1436266952784628, guid: 519bd2ecc2b529a49aa4f602759fbb35, type: 2}
+  - L2_2: {fileID: 1020058266662564, guid: fba8375ef4ec14143b9f57a3af96e42d, type: 2}
+  - L2_3: {fileID: 1643620681045682, guid: c8652b5fcecfbd040a567c475c4f3a28, type: 2}
+  - L2_4: {fileID: 1626839073819972, guid: b1b93d14e70dd484bab6e3a757d2423c, type: 2}
+  - L2_5: {fileID: 1855935587496586, guid: 9ce6acf5169b6af40bd37b15b6572bfd, type: 2}
+  - L2_6: {fileID: 1405332595790824, guid: ce41d06eec2bbc541afea1b1b3273c9b, type: 2}
+  - L3_1: {fileID: 1466191625558112, guid: b01b40300ba2fbb438c809d2660e1672, type: 2}
+  - L3_2: {fileID: 1890003565373124, guid: 1f7e006e39efef543ba218158e2cb0bc, type: 2}
+  - L3_3: {fileID: 1667826477580224, guid: 8be5a70b9876a554b8fa9bd9af5978db, type: 2}
+  - L3_4: {fileID: 1892919914192442, guid: 98b8b91359ea85945a49658fa801f57d, type: 2}
+  - L3_5: {fileID: 1451747443885444, guid: 8648942e6fb699c458cbb1073b0db786, type: 2}
+  - L3_6: {fileID: 1348810730099760, guid: bfc7f7d32b831eb4fa206f36adbcbf3f, type: 2}
+  - L4_1: {fileID: 1203323631518744, guid: 6f04594fbe3b9994da3be3d21d75224b, type: 2}
+  - L4_2: {fileID: 1644510448824604, guid: e4bb65ad9528d4747971b6889816ae19, type: 2}
+  - L4_3: {fileID: 1270465454529304, guid: 1a48e3fd2cce48b4eaff80a70b82f82e, type: 2}
+  - L4_4: {fileID: 1049976937151580, guid: 0a0914ac3a01be14f8817d083ef669d7, type: 2}
+  - L4_5: {fileID: 1453025729293742, guid: 60a543696268537449b0ede88c99dc5e, type: 2}
+  - L4_6: {fileID: 1303889589464642, guid: cfaa7b360123d8b4cb73bfc24e2aab05, type: 2}
+  - L5_1: {fileID: 1957104940955494, guid: 7db7d7dedefe717459861bb571bc3afe, type: 2}
+  - L5_2: {fileID: 1794824668076700, guid: c9715f87b13ba00448f669143eca819e, type: 2}
+  - L5_3: {fileID: 1523990483407964, guid: 4cfecc330ed9ac742881e3b08cf6b909, type: 2}
+  - L5_4: {fileID: 1588833075546380, guid: 5cdef8a3163b86a439038cdc2f2e8d43, type: 2}
+  - L5_5: {fileID: 1492512116145098, guid: a88f1670f88af34499dafc85a8c4015a, type: 2}
+  - L5_6: {fileID: 1385934065321638, guid: e4ff55561f088104b9da8d463e9adb72, type: 2}
+  - L6_1: {fileID: 1331819975710828, guid: f7fe22bea20935c4da7ca800a2d902e8, type: 2}
+  - L6_2: {fileID: 1211521083753148, guid: a1b0df0e916bf3d47960412c481c89ca, type: 2}
+  - L6_3: {fileID: 1598358878791024, guid: 3b35d66e92e188348a12e7f6c21d5d87, type: 2}
+  - L6_4: {fileID: 1280240161332236, guid: db3ed5c0847426b4d8ddd3e01e598983, type: 2}
+  - L6_5: {fileID: 1671635998699490, guid: 6b827f16a62c6fe4384c8739dce71a66, type: 2}
+  - L6_6: {fileID: 1191423869243950, guid: cb2809ac52e1abd43aa1560acd77d267, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
