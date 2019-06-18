@@ -1,0 +1,18 @@
+fileFormatVersion: 2
+guid: 60ac88422dae67a4e8d68782168fb1e9
+timeCreated: 1560879829
+licenseType: Free
+MonoImporter:
+  serializedVersion: 2
+  defaultReferences:
+  - lvl1: {fileID: 8300000, guid: 9dcb04eb0500c434f9aa3314deae3537, type: 3}
+  - lvl2: {fileID: 8300000, guid: d97a57a7ed4c0594c892887bd0489206, type: 3}
+  - lvl3: {fileID: 8300000, guid: 0f1a527a8eaa75c4f88415776a998f5f, type: 3}
+  - lvl4: {fileID: 8300000, guid: dd90ce4c895304640bae967efb19228d, type: 3}
+  - lvl5: {fileID: 8300000, guid: ee1da3b6656665b45bf6ed5b8ef9815e, type: 3}
+  - Menu: {fileID: 8300000, guid: 15bb9554a142a314d96d3bfa01a1d8e4, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

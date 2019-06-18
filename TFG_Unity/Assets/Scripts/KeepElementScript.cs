@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class KeepElementScript : MonoBehaviour {
 
-	public GameObject ins;
+	public GameObject ins, levelController;
+	LvlControlScript sc;
 	float sclX;
+
+	void Start () {
+		sc = levelController.GetComponent<LvlControlScript> ();
+	}
 
 	void Update () {
 		if (Input.touchCount > 0) {
@@ -15,8 +20,10 @@ public class KeepElementScript : MonoBehaviour {
 				if (GetComponent<CircleCollider2D> () == Physics2D.OverlapPoint (touchPos)) {
 					ins.transform.localScale += Vector3.one * .1f;
 					sclX = ins.transform.localScale.x;
-					if (sclX >= 3.53f)
+					if (sclX >= 3.53f) {
+						sc.Score (3);
 						Destroy (gameObject);
+					}
 				} else if (GetComponent<CircleCollider2D> () != Physics2D.OverlapPoint (touchPos)) {
 					ins.transform.localScale -= Vector3.one * .05f;
 					sclX = ins.transform.localScale.x;

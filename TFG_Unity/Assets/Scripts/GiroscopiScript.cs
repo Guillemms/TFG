@@ -6,7 +6,12 @@ public class GiroscopiScript : MonoBehaviour {
 
 	Vector3 direction; 
 	float speed = 10.0f, time = 3.0f;
-	public GameObject giroscopi;
+	public GameObject giroscopi, levelController;
+	LvlControlScript sc;
+
+	void Start () {
+		sc = levelController.GetComponent<LvlControlScript> ();
+	}
 
 	void Update () {
 		direction = Vector3.zero;
@@ -22,8 +27,10 @@ public class GiroscopiScript : MonoBehaviour {
 
 	public void OnTriggerStay2D(){
 		time -= Time.deltaTime;
-		if (time <= 0.0f)
+		if (time <= 0.0f) {
+			sc.Score (5);
 			Destroy (giroscopi);
+		}
 	}
 
 	public void OnTriggerExit2D(){

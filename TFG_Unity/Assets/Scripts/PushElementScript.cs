@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class PushElementScript : MonoBehaviour {
 
-	public GameObject ins;
+	public GameObject ins, levelController;
+	LvlControlScript sc;
+	float time=3.0f, rep; 
+
+	void Start () {
+		sc = levelController.GetComponent<LvlControlScript> ();
+		rep = LvlControlScript.rep;
+		time -= rep - 1.0f;
+	}
 
 	void Update () {
 		if (Input.touchCount > 0) {
@@ -16,9 +24,16 @@ public class PushElementScript : MonoBehaviour {
 					newIns.transform.parent = gameObject.transform;
 				}
 			}
-			if (touch.phase == TouchPhase.Ended)
-				if (GetComponent<CircleCollider2D> () == Physics2D.OverlapPoint (touchPos))
+			if (touch.phase == TouchPhase.Ended){
+				if (GetComponent<CircleCollider2D> () == Physics2D.OverlapPoint (touchPos)) {
+					sc.Score (1);
 					Destroy (gameObject);
+				}
+			}
 		}
+		if (time <= 0.0f) {
+			sc.GameOver ();
+		}
+		time -= Time.deltaTime;
 	}
 }

@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class RoadElementScript : MonoBehaviour {
 
-	Rigidbody2D rb;
+	//Rigidbody2D rb;
 	Vector2 pos;
-	public GameObject road;
+	public GameObject road, levelController;
+	LvlControlScript sc;
 
 	void Start () {
-		rb = GetComponent<Rigidbody2D> ();
+		//rb = GetComponent<Rigidbody2D> ();
 		pos = transform.position;
+		sc = levelController.GetComponent<LvlControlScript> ();
 	}
 
 	void Update () {
@@ -20,7 +22,7 @@ public class RoadElementScript : MonoBehaviour {
 			switch (touch.phase) {
 			case TouchPhase.Moved:
 				if (GetComponent<CircleCollider2D> () == Physics2D.OverlapPoint (touchPos)) {
-					rb.MovePosition (new Vector2 (touchPos.x, touchPos.y));
+					transform.position = touchPos;
 				}
 				break;
 			case TouchPhase.Ended:
@@ -31,6 +33,7 @@ public class RoadElementScript : MonoBehaviour {
 	}
 
 	public void OnTriggerEnter2D(){
+		sc.Score (5);
 		Destroy (road);
 	}
 }

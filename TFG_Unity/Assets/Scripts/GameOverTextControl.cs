@@ -10,8 +10,8 @@ public class GameOverTextControl : MonoBehaviour {
 	void Start () {
 		int lan = OptionsTextControl.language;
 		int lvl = HomeInteractiveScript.lvl;
+		int sc = LvlControlScript.points;
 		int[] bs = HomeInteractiveScript.bs;
-		//int lsc = scripname.score;
 
 		switch (lan) {
 		case 0:
@@ -27,9 +27,13 @@ public class GameOverTextControl : MonoBehaviour {
 			bsoreTit.text = "Best Score";
 			break;
 		}
+			
+		score.text = sc.ToString();
 
-		score.text = "0";
-		//score.text = lsc.ToString();
+		if (sc > bs [lvl]) {
+			bs [lvl] = sc;
+		} 
+
 		bscore.text = bs [lvl].ToString();
 	}
 }
