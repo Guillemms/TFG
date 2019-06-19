@@ -27,5 +27,6 @@ public class LvlManager : MonoBehaviour {
 
 	public void loadLvl(){
 		SceneManager.LoadScene ("Lvl-"+lvl);
+		//SceneManager.LoadScene ("Prelvl");
 	}
 }

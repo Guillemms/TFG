@@ -8,11 +8,14 @@ public class RoadElementScript : MonoBehaviour {
 	Vector2 pos;
 	public GameObject road, levelController;
 	LvlControlScript sc;
+	float time=5.0f, rep; 
 
 	void Start () {
 		//rb = GetComponent<Rigidbody2D> ();
 		pos = transform.position;
 		sc = levelController.GetComponent<LvlControlScript> ();
+		rep = LvlControlScript.rep;
+		time -= rep - 1.0f;
 	}
 
 	void Update () {
@@ -30,6 +33,11 @@ public class RoadElementScript : MonoBehaviour {
 				break;
 			}
 		}
+
+		if (time <= 0.0f) {
+			sc.GameOver ();
+		}
+		time -= Time.deltaTime;
 	}
 
 	public void OnTriggerEnter2D(){

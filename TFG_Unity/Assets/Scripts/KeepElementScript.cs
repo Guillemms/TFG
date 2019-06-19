@@ -6,10 +6,12 @@ public class KeepElementScript : MonoBehaviour {
 
 	public GameObject ins, levelController;
 	LvlControlScript sc;
-	float sclX;
+	float sclX, time=3.0f, rep;
 
 	void Start () {
 		sc = levelController.GetComponent<LvlControlScript> ();
+		rep = LvlControlScript.rep;
+		time -= rep - 1.0f;
 	}
 
 	void Update () {
@@ -37,5 +39,10 @@ public class KeepElementScript : MonoBehaviour {
 			if (sclX <= 1.59f)
 				ins.transform.localScale = Vector3.one * 1.59f;
 		}
+
+		if (time <= 0.0f) {
+			sc.GameOver ();
+		}
+		time -= Time.deltaTime;
 	}
 }

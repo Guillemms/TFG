@@ -5,12 +5,14 @@ using UnityEngine;
 public class GiroscopiScript : MonoBehaviour {
 
 	Vector3 direction; 
-	float speed = 10.0f, time = 3.0f;
+	float speed = 10.0f, time = 3.0f, got = 7.0f, rep;
 	public GameObject giroscopi, levelController;
 	LvlControlScript sc;
 
 	void Start () {
 		sc = levelController.GetComponent<LvlControlScript> ();
+		rep = LvlControlScript.rep;
+		got -= rep - 1.0f;
 	}
 
 	void Update () {
@@ -18,11 +20,16 @@ public class GiroscopiScript : MonoBehaviour {
 		direction.x = Input.acceleration.x;
 		transform.Translate ((direction * Time.deltaTime)*speed);
 
-		if (gameObject.transform.position.x <= -1.4f) {
-			gameObject.transform.position = new Vector3 (-1.4f, 2.9f, 0.0f);
-		} else if(gameObject.transform.position.x >= 1.4f){
-			gameObject.transform.position = new Vector3 (1.4f, 2.9f, 0.0f);
+		if (gameObject.transform.position.x <= -1.85f) {
+			gameObject.transform.position = new Vector3 (-1.85f, 2.9f, 0.0f);
+		} else if(gameObject.transform.position.x >= 1.85f){
+			gameObject.transform.position = new Vector3 (1.85f, 2.9f, 0.0f);
 		}
+
+		if (time <= 0.0f) {
+			sc.GameOver ();
+		}
+		time -= Time.deltaTime;
 	}
 
 	public void OnTriggerStay2D(){
