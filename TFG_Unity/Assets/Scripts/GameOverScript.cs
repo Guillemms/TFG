@@ -9,14 +9,17 @@ public class GameOverScript : MonoBehaviour {
 	int lvl;
 
 	void Start(){
-		lvl = HomeInteractiveScript.lvl;
+		lvl = PlayerPrefs.GetInt ("lvl", 1);
 	}
 
 	void OnMouseDown () {
 		if (gameObject.tag == "Back") {
 			SceneManager.LoadScene ("Home");
 		} else if (gameObject.tag == "Nextlvl") {
-			SceneManager.LoadScene ("Lvl-"+(lvl+1));
+			lvl++;
+			PlayerPrefs.SetInt ("lvl", lvl);
+			PlayerPrefs.Save ();
+			SceneManager.LoadScene ("Lvl-"+lvl);
 		} else if (gameObject.tag == "Replaylvl") {
 			SceneManager.LoadScene ("Lvl-"+lvl);
 		}

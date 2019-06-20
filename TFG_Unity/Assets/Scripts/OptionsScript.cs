@@ -8,10 +8,20 @@ public class OptionsScript : MonoBehaviour {
 
 	public Image musicIMG, soundIMG; 
 	public Sprite MusicOff, MusicOn, SoundOn, SoundOff;
-	public static int ActM=1, ActS=1;
+	public int ActM, ActS;
 
+	void Awake(){
+		if(!PlayerPrefs.HasKey("ActM"))
+			PlayerPrefs.SetInt ("ActM", 1);
+		if(!PlayerPrefs.HasKey("ActS"))
+			PlayerPrefs.SetInt ("ActS", 1);
+		PlayerPrefs.Save ();
+	}
 
 	void Start(){
+		ActM = PlayerPrefs.GetInt ("ActM", 1);
+		ActS = PlayerPrefs.GetInt ("ActS", 1);
+
 		if (ActM == 2) {
 			musicIMG.sprite = MusicOff;
 		} else {
@@ -45,6 +55,8 @@ public class OptionsScript : MonoBehaviour {
 			musicIMG.sprite = MusicOn;
 			ActM = 1;
 		}
+		PlayerPrefs.SetInt ("ActM", ActM);
+		PlayerPrefs.Save ();
 	}
 		
 	void Sound(){
@@ -55,5 +67,7 @@ public class OptionsScript : MonoBehaviour {
 			soundIMG.sprite = SoundOn;
 			ActS = 1;
 		}
+		PlayerPrefs.SetInt ("ActS", ActS);
+		PlayerPrefs.Save ();
 	}
 }

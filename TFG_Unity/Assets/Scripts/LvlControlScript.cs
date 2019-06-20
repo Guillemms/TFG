@@ -11,40 +11,50 @@ public class LvlControlScript : MonoBehaviour {
 	public GameObject giro;
 	public static int points = 0;
 	public static float rep = 1.0f;
-	int lan, count = 0, mult = 1;
+	int lan, count = 0, mult = 1, shield;
 	float time, songTime = 0.0f;
 	Text scoreTxt;
 	AudioSource music;
-	bool x2, shield;
 
 	void Start () {
-		/*int lvl = HomeInteractiveScript.lvl;
-		x2 = BoostersScript.x2;
-		if (x2)
+		int x2 = PlayerPrefs.GetInt ("x2", 0);
+		if (x2==1)
 			mult = 2;
-		shield = BoostersScript.shield;*/
+		PlayerPrefs.SetInt ("x2", 0);
+
+		shield = PlayerPrefs.GetInt ("Sheild", 0);
+		PlayerPrefs.SetInt ("Sheild", 0);
+		PlayerPrefs.Save ();
+
 		lan = OptionsTextControl.language;
-		sceneName = SceneManager.GetActiveScene ().name;
-		if (sceneName=="Lvl-1") {//canviar per lvl
-			time = 0.5f;
-			InvokeRepeating ("lvl1", 0.0f, time/rep);
-		} else if (sceneName=="Lvl-2") {
-			time=1.0f;
-			InvokeRepeating ("lvl2", 0.0f, time/rep);
-		} else if (sceneName=="Lvl-3") {
-			time=1.0f;
-			InvokeRepeating ("lvl3", 0.0f, time/rep);
-		} else if (sceneName=="Lvl-4") {
-			time = 3.0f;
-			InvokeRepeating ("lvl4", 0.0f, time/rep);
-		} else if (sceneName=="Lvl-5") {
-			time = 5.0f;
-			InvokeRepeating ("lvl5", 0.0f, time/rep);
-		}
 
 		music = GameObject.Find ("MusicSource").GetComponent<AudioSource> ();
 		points = 0;
 		Score (0);
+
+		int lvl = PlayerPrefs.GetInt ("lvl", 1);
+		switch (lvl) {
+		case 1: 
+			time = 0.5f;
+			InvokeRepeating ("lvl1", 0.0f, time / rep);
+			break;
+		case 2: 
+			time = 1.0f;
+			InvokeRepeating ("lvl2", 0.0f, time / rep);
+			break;
+		case 3: 
+			time = 1.0f;
+			InvokeRepeating ("lvl3", 0.0f, time / rep);
+			break;
+		case 4: 
+			time = 3.0f;
+			InvokeRepeating ("lvl4", 0.0f, time / rep);
+			break;
+		case 5: 
+			time = 5.0f;
+			InvokeRepeating ("lvl5", 0.0f, time / rep);
+			break;
+		}
 	}
 
 	void Update(){
@@ -75,12 +85,11 @@ public class LvlControlScript : MonoBehaviour {
 	}
 
 	public void GameOver(){
-		/*if (shield) {
-			shield = false;
+		if (shield == 1) {
+			shield = 0;
 		} else {
 			SceneManager.LoadScene ("GameOver");
-		}*/
-		SceneManager.LoadScene ("GameOver");
+		}
 	}
 
 	void lvl1(){

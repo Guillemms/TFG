@@ -10,7 +10,7 @@ public class SelectLevelTextControl : MonoBehaviour {
 	public Button btn;
 
 	void Start () {
-		int lan = OptionsTextControl.language;
+		int lan = PlayerPrefs.GetInt ("lan", 0);
 		lvl = GameObject.FindGameObjectsWithTag("LevelName");
 
 		switch (lan) {

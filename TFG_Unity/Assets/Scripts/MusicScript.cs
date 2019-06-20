@@ -9,7 +9,7 @@ public class MusicScript : MonoBehaviour {
 	string scen;
 	static MusicScript instance = null;
 	public static MusicScript Instance{ get { return instance; } }
-	int bscn=0;
+	int bscn=0, m;
 
 	void Start () {
 		if (instance != null && instance != this) {
@@ -23,10 +23,10 @@ public class MusicScript : MonoBehaviour {
 		DontDestroyOnLoad (this.gameObject);
 		audio.clip = Menu;
 		audio.Play ();
+		m = PlayerPrefs.GetInt ("ActM", 1);
 	}
 
 	void Update () {
-		int m = OptionsScript.ActM;
 		if (m == 2) {
 			GetComponent<AudioSource> ().mute = true;
 		} else if (m == 1) {

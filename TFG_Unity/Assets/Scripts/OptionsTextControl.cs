@@ -64,5 +64,6 @@ public class OptionsTextControl : MonoBehaviour {
 			languageIMG.sprite = IngLan;
 			break;
 		}
+		PlayerPrefs.Save ();
 	}
 }

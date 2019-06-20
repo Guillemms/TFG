@@ -9,7 +9,7 @@ public class HomeTextScript : MonoBehaviour {
 	public Text selvl, x2B, shieldB, MixB, L5, L10, LFull, LUn;
 
 	void Start () {
-		int lan = OptionsTextControl.language;
+		int lan = PlayerPrefs.GetInt ("lan", 0);
 
 		switch (lan) {
 		case 0:

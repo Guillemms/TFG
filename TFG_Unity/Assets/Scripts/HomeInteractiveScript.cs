@@ -8,17 +8,29 @@ public class HomeInteractiveScript : MonoBehaviour {
 	public GameObject boosterPanel, lifePanel;
 	float tpanel = 1.0f;
 	bool panel = false;
-	public static int lvl = 1, live, bx2, bsh;
-	public static int[] bs = new int[10];
+	public int lvl, live, bx2, bsh;
 
 	void Start(){
-		if (bs.Length > 0) 
-			for (int i = 0; i < 10; i++) 
-				bs [i] = i.Equals(5) ? 750 : 0;
-		
-		live = 20;
-		bx2 = 5;
-		bsh = 5;
+		if (PlayerPrefs.HasKey ("lvl")) {
+			lvl = PlayerPrefs.GetInt ("lvl", 1);
+		} else {
+			PlayerPrefs.SetInt ("lvl", 1);
+		}
+		if(PlayerPrefs.HasKey("lives")) {
+			live = PlayerPrefs.GetInt ("lives", 0);
+		} else {
+			PlayerPrefs.SetInt ("lives", 20);
+		}
+		if(PlayerPrefs.HasKey("Nx2")) {
+			bx2 = PlayerPrefs.GetInt ("Nx2", 0);
+		} else {
+			PlayerPrefs.SetInt ("Nx2", 5);
+		}
+		if(PlayerPrefs.HasKey("Nsheild")) {
+			bsh = PlayerPrefs.GetInt ("Nsheild", 0);
+		} else {
+			PlayerPrefs.SetInt ("Nsheild", 5);
+		}
 	}
 
 	void Update () {
@@ -42,15 +54,18 @@ public class HomeInteractiveScript : MonoBehaviour {
 			SceneManager.LoadScene ("SelectLevel");
 		} else if (gameObject.tag == "x2") {
 			bx2 += 3;
-			Debug.Log (bx2);
+			PlayerPrefs.SetInt ("Nx2", bx2);
+			PlayerPrefs.Save ();
 		} else if (gameObject.tag == "Shield") {
 			bsh += 3;
-			Debug.Log (bsh);
+			PlayerPrefs.SetInt ("Nsheild", bsh);
+			PlayerPrefs.Save ();
 		} else if (gameObject.tag == "Mix") {
 			bx2 += 5;
 			bsh += 5;
-			Debug.Log (bsh);
-			Debug.Log (bx2);
+			PlayerPrefs.SetInt ("Nx2", bx2);
+			PlayerPrefs.SetInt ("Nsheild", bsh);
+			PlayerPrefs.Save ();
 		} 
 	}
 }

@@ -39,6 +39,7 @@ public class BoostersScript : MonoBehaviour {
 		bx2--;
 		PlayerPrefs.SetInt ("Nx2", bx2);
 		PlayerPrefs.SetInt ("x2", x2);
+		PlayerPrefs.Save ();
 		SceneManager.LoadScene ("Lvl-"+lvl);
 	}
 
@@ -47,6 +48,7 @@ public class BoostersScript : MonoBehaviour {
 		bsh--;
 		PlayerPrefs.SetInt ("Nsheild", bsh);
 		PlayerPrefs.SetInt ("Sheild", shield);
+		PlayerPrefs.Save ();
 		SceneManager.LoadScene ("Lvl-"+lvl);
 	}
 }
