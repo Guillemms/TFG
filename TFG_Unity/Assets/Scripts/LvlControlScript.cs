@@ -13,10 +13,15 @@ public class LvlControlScript : MonoBehaviour {
 	public static float rep = 1.0f;
 	int lan, count = 0, mult = 1, shield;
 	float time, songTime = 0.0f;
-	Text scoreTxt;
+	Text scoreTxt, giroTxt;
 	AudioSource music;
+	GameObject video, boostPanel;
+	bool go;
 
 	void Start () {
+		boostPanel = GameObject.Find ("BoosterPanel");
+		boostPanel.gameObject.SetActive (false);
+
 		int x2 = PlayerPrefs.GetInt ("x2", 0);
 		if (x2==1)
 			mult = 2;
@@ -26,46 +31,84 @@ public class LvlControlScript : MonoBehaviour {
 		PlayerPrefs.SetInt ("Sheild", 0);
 		PlayerPrefs.Save ();
 
-		lan = OptionsTextControl.language;
+		lan = PlayerPrefs.GetInt ("lan", 0);
 
-		music = GameObject.Find ("MusicSource").GetComponent<AudioSource> ();
+		//music = GameObject.Find ("MusicSource").GetComponent<AudioSource> ();
 		points = 0;
 		Score (0);
+
 
 		int lvl = PlayerPrefs.GetInt ("lvl", 1);
 		switch (lvl) {
 		case 1: 
 			time = 0.5f;
-			InvokeRepeating ("lvl1", 0.0f, time / rep);
+			Invoke ("first", 3.0f);
+			Invoke ("second", 8.0f);
+			InvokeRepeating ("lvl1", 8.0f, time / rep);
 			break;
 		case 2: 
 			time = 1.0f;
-			InvokeRepeating ("lvl2", 0.0f, time / rep);
+			Invoke ("first", 4.0f);
+			Invoke ("second", 9.0f);
+			InvokeRepeating ("lvl2", 9.0f, time / rep);
 			break;
 		case 3: 
 			time = 1.0f;
-			InvokeRepeating ("lvl3", 0.0f, time / rep);
+			giroTxt = GameObject.Find("GiroTxt").GetComponent<Text>();
+			switch (lan) {
+			case 0:
+				giroTxt.text = "S'utilitza giroscopi";
+				break;
+			case 1: 
+				giroTxt.text = "Se utiliza giroscopio";
+				break;
+			case 2: 
+				giroTxt.text = "Gyroscope is used";
+				break;
+			}
+			Invoke ("first", 3.0f);
+			Invoke ("second", 8.0f);
+			InvokeRepeating ("lvl3", 8.0f, time / rep);
 			break;
 		case 4: 
 			time = 3.0f;
-			InvokeRepeating ("lvl4", 0.0f, time / rep);
+			Invoke ("first", 4.0f);
+			Invoke ("second", 9.0f);
+			InvokeRepeating ("lvl4", 9.0f, time / rep);
 			break;
 		case 5: 
 			time = 5.0f;
-			InvokeRepeating ("lvl5", 0.0f, time / rep);
+			Invoke ("first", 4.0f);
+			Invoke ("second", 9.0f);
+			InvokeRepeating ("lvl5", 9.0f, time / rep);
 			break;
 		}
 	}
 
 	void Update(){
-		if (songTime >= music.clip.length/rep) {
+		go = BoostersScript.go;
+		if (go) {
+			go = false;
+			Invoke ("second", 0.0f);
+		} 
+		/*if (songTime >= music.clip.length/rep) {
 			songTime = 0.0f;
 			if (music.pitch < 3.0f) {
 				rep += 0.25f;
 				music.pitch += 0.25f;
 			}
 		}
-		songTime += Time.deltaTime;
+		songTime += Time.deltaTime;*/
+	}
+
+	void first(){
+		video = GameObject.Find ("VideoPanel");
+		Destroy (video);
+		boostPanel.gameObject.SetActive (true);
+	}
+
+	void second(){
+		Destroy (boostPanel);
 	}
 
 	public void Score(int s){

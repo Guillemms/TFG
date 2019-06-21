@@ -7,7 +7,8 @@ using UnityEngine;
 public class BoostersScript : MonoBehaviour {
 
 	public Text playtxt;
-	int bx2, bsh, x2 = 0, shield = 0, lvl, lan;
+	int bx2, bsh, x2 = 0, shield = 0, lan;
+	public static bool go = false;
 
 	void Start () {
 		lan = PlayerPrefs.GetInt ("lan", 0);
@@ -23,14 +24,14 @@ public class BoostersScript : MonoBehaviour {
 			break;
 		}
 
-		lvl = PlayerPrefs.GetInt ("lvl", 1);
 		bx2 = PlayerPrefs.GetInt ("Nx2", 0);
 		bsh = PlayerPrefs.GetInt ("Nsheild", 0);
 	}
 
-	void Update () {
-		if (gameObject.name == "play") {
-			SceneManager.LoadScene ("Lvl-"+lvl);
+	void OnMouseDown() {
+		if (gameObject.name == "Start") {
+			go = true;
+			Debug.Log ("cdjciuh");
 		} 
 	}
 
@@ -40,7 +41,8 @@ public class BoostersScript : MonoBehaviour {
 		PlayerPrefs.SetInt ("Nx2", bx2);
 		PlayerPrefs.SetInt ("x2", x2);
 		PlayerPrefs.Save ();
-		SceneManager.LoadScene ("Lvl-"+lvl);
+		go = true;
+		Debug.Log ("x2");
 	}
 
 	public void vshield(){
@@ -49,6 +51,7 @@ public class BoostersScript : MonoBehaviour {
 		PlayerPrefs.SetInt ("Nsheild", bsh);
 		PlayerPrefs.SetInt ("Sheild", shield);
 		PlayerPrefs.Save ();
-		SceneManager.LoadScene ("Lvl-"+lvl);
+		go = true;
+		Debug.Log ("sh");
 	}
 }
