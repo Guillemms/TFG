@@ -8,9 +8,13 @@ public class BoostersScript : MonoBehaviour {
 
 	public Text playtxt;
 	int bx2, bsh, x2 = 0, shield = 0, lan;
-	public static bool go = false;
+	public static bool go;
+	public GameObject levelController;
+	LvlControlScript sc;
 
 	void Start () {
+		go = false;
+		sc = levelController.GetComponent<LvlControlScript> ();
 		lan = PlayerPrefs.GetInt ("lan", 0);
 		switch (lan) {
 		case 0:
@@ -31,7 +35,6 @@ public class BoostersScript : MonoBehaviour {
 	void OnMouseDown() {
 		if (gameObject.name == "Start") {
 			go = true;
-			Debug.Log ("cdjciuh");
 		} 
 	}
 
@@ -42,7 +45,7 @@ public class BoostersScript : MonoBehaviour {
 		PlayerPrefs.SetInt ("x2", x2);
 		PlayerPrefs.Save ();
 		go = true;
-		Debug.Log ("x2");
+		sc.Booster ();
 	}
 
 	public void vshield(){
@@ -52,6 +55,6 @@ public class BoostersScript : MonoBehaviour {
 		PlayerPrefs.SetInt ("Sheild", shield);
 		PlayerPrefs.Save ();
 		go = true;
-		Debug.Log ("sh");
+		sc.Booster ();
 	}
 }

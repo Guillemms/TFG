@@ -6,13 +6,14 @@ public class GiroscopiScript : MonoBehaviour {
 
 	Vector3 direction; 
 	float speed = 10.0f, time = 3.0f, got = 7.0f, rep;
-	public GameObject giroscopi, levelController;
+	public GameObject giroscopi, levelController, zone;
 	LvlControlScript sc;
 
 	void Start () {
 		sc = levelController.GetComponent<LvlControlScript> ();
 		rep = LvlControlScript.rep;
 		got -= rep - 1.0f;
+		zone.transform.position = new Vector3 (Random.Range (-1.55f, 1.55f), 2.909f, 0.0f);
 	}
 
 	void Update () {
@@ -28,6 +29,7 @@ public class GiroscopiScript : MonoBehaviour {
 
 		if (time <= 0.0f) {
 			sc.GameOver ();
+			Destroy (giroscopi);
 		}
 		time -= Time.deltaTime;
 	}

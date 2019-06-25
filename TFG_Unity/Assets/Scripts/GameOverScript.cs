@@ -17,6 +17,8 @@ public class GameOverScript : MonoBehaviour {
 			SceneManager.LoadScene ("Home");
 		} else if (gameObject.tag == "Nextlvl") {
 			lvl++;
+			if (lvl > 5)
+				lvl = 5;
 			PlayerPrefs.SetInt ("lvl", lvl);
 			PlayerPrefs.Save ();
 			SceneManager.LoadScene ("Lvl-"+lvl);

@@ -33,6 +33,7 @@ public class PushElementScript : MonoBehaviour {
 		}
 		if (time <= 0.0f) {
 			sc.GameOver ();
+			Destroy (gameObject);
 		}
 		time -= Time.deltaTime;
 	}

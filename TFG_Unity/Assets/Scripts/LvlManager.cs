@@ -24,6 +24,8 @@ public class LvlManager : MonoBehaviour {
 
 	public void loadID (int i) {
 		lvl = i+1;
+		if (lvl > 5)
+			lvl = 5;
 		PlayerPrefs.SetInt ("lvl", lvl);
 		PlayerPrefs.Save ();
 		for(int j = 0; j < btnlvl.Length; j++)
@@ -33,6 +35,5 @@ public class LvlManager : MonoBehaviour {
 
 	public void loadLvl(){
 		SceneManager.LoadScene ("Lvl-"+lvl);
-		//SceneManager.LoadScene ("Prelvl");
 	}
 }

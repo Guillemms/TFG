@@ -8,9 +8,11 @@ public class HomeInteractiveScript : MonoBehaviour {
 	public GameObject boosterPanel, lifePanel;
 	float tpanel = 1.0f;
 	bool panel = false;
-	public int lvl, live, bx2, bsh;
+	public int lvl, live, bx2, bsh, ActM;
+	AudioSource music;
 
 	void Start(){
+		music = GameObject.Find ("MusicSource").GetComponent<AudioSource> ();
 		if (PlayerPrefs.HasKey ("lvl")) {
 			lvl = PlayerPrefs.GetInt ("lvl", 1);
 		} else {
@@ -30,6 +32,14 @@ public class HomeInteractiveScript : MonoBehaviour {
 			bsh = PlayerPrefs.GetInt ("Nsheild", 0);
 		} else {
 			PlayerPrefs.SetInt ("Nsheild", 5);
+		}
+		if (PlayerPrefs.HasKey ("ActM")) {
+			ActM = PlayerPrefs.GetInt ("ActM", 1);
+			if (ActM == 1) {
+				music.mute = false;
+			} else {
+				music.mute = true;
+			}
 		}
 	}
 

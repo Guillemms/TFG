@@ -4,14 +4,12 @@ using UnityEngine;
 
 public class RoadElementScript : MonoBehaviour {
 
-	//Rigidbody2D rb;
 	Vector2 pos;
 	public GameObject road, levelController;
 	LvlControlScript sc;
 	float time=5.0f, rep; 
 
 	void Start () {
-		//rb = GetComponent<Rigidbody2D> ();
 		pos = transform.position;
 		sc = levelController.GetComponent<LvlControlScript> ();
 		rep = LvlControlScript.rep;
@@ -36,6 +34,7 @@ public class RoadElementScript : MonoBehaviour {
 
 		if (time <= 0.0f) {
 			sc.GameOver ();
+			Destroy (road);
 		}
 		time -= Time.deltaTime;
 	}

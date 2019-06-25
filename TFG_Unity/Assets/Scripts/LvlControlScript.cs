@@ -9,9 +9,9 @@ public class LvlControlScript : MonoBehaviour {
 	string sceneName;
 	public GameObject[] P, C, L1, L2, L3, L4, L5, L6;
 	public GameObject giro;
-	public static int points = 0;
+	public static int points = 0, lan, mult, shield;
 	public static float rep = 1.0f;
-	int lan, count = 0, mult = 1, shield;
+	int count = 0;
 	float time, songTime = 0.0f;
 	Text scoreTxt, giroTxt;
 	AudioSource music;
@@ -21,23 +21,11 @@ public class LvlControlScript : MonoBehaviour {
 	void Start () {
 		boostPanel = GameObject.Find ("BoosterPanel");
 		boostPanel.gameObject.SetActive (false);
-
-		int x2 = PlayerPrefs.GetInt ("x2", 0);
-		if (x2==1)
-			mult = 2;
-		PlayerPrefs.SetInt ("x2", 0);
-
-		shield = PlayerPrefs.GetInt ("Sheild", 0);
-		PlayerPrefs.SetInt ("Sheild", 0);
-		PlayerPrefs.Save ();
-
 		lan = PlayerPrefs.GetInt ("lan", 0);
-
-		//music = GameObject.Find ("MusicSource").GetComponent<AudioSource> ();
+		mult = 1;
+		music = GameObject.Find ("MusicSource").GetComponent<AudioSource> ();
 		points = 0;
 		Score (0);
-
-
 		int lvl = PlayerPrefs.GetInt ("lvl", 1);
 		switch (lvl) {
 		case 1: 
@@ -91,14 +79,14 @@ public class LvlControlScript : MonoBehaviour {
 			go = false;
 			Invoke ("second", 0.0f);
 		} 
-		/*if (songTime >= music.clip.length/rep) {
+		if (songTime >= music.clip.length/rep) {
 			songTime = 0.0f;
 			if (music.pitch < 3.0f) {
 				rep += 0.25f;
 				music.pitch += 0.25f;
 			}
 		}
-		songTime += Time.deltaTime;*/
+		songTime += Time.deltaTime;
 	}
 
 	void first(){
@@ -108,7 +96,21 @@ public class LvlControlScript : MonoBehaviour {
 	}
 
 	void second(){
-		Destroy (boostPanel);
+		boostPanel.gameObject.SetActive (false);
+	}
+
+	public void Booster(){
+		int x2 = PlayerPrefs.GetInt ("x2", 0);
+		if (x2 == 1) {
+			mult = 2;
+		} else {
+			mult = 1;
+		}
+		PlayerPrefs.SetInt ("x2", 0);
+
+		shield = PlayerPrefs.GetInt ("Sheild", 0);
+		PlayerPrefs.SetInt ("Sheild", 0);
+		PlayerPrefs.Save ();
 	}
 
 	public void Score(int s){
@@ -130,6 +132,7 @@ public class LvlControlScript : MonoBehaviour {
 	public void GameOver(){
 		if (shield == 1) {
 			shield = 0;
+			Debug.Log("escudo");
 		} else {
 			SceneManager.LoadScene ("GameOver");
 		}
@@ -161,8 +164,6 @@ public class LvlControlScript : MonoBehaviour {
 				Instantiate (C [Random.Range (0, 6)], new Vector3 (Random.Range (-1.8f, 1.8f), Random.Range (-3.6f, 1.18f), 0.0f), transform.rotation);
 			}
 		}
-
-
 	}
 
 	void lvl4(){

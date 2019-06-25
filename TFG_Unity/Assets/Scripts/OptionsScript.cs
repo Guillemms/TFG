@@ -8,19 +8,13 @@ public class OptionsScript : MonoBehaviour {
 
 	public Image musicIMG, soundIMG; 
 	public Sprite MusicOff, MusicOn, SoundOn, SoundOff;
-	public int ActM, ActS;
-
-	void Awake(){
-		if(!PlayerPrefs.HasKey("ActM"))
-			PlayerPrefs.SetInt ("ActM", 1);
-		if(!PlayerPrefs.HasKey("ActS"))
-			PlayerPrefs.SetInt ("ActS", 1);
-		PlayerPrefs.Save ();
-	}
+	int ActM, ActS;
+	AudioSource music;
 
 	void Start(){
 		ActM = PlayerPrefs.GetInt ("ActM", 1);
 		ActS = PlayerPrefs.GetInt ("ActS", 1);
+		music = GameObject.Find ("MusicSource").GetComponent<AudioSource> ();
 
 		if (ActM == 2) {
 			musicIMG.sprite = MusicOff;
@@ -51,9 +45,11 @@ public class OptionsScript : MonoBehaviour {
 		if (ActM == 1) {
 			musicIMG.sprite = MusicOff;
 			ActM = 2;
+			music.mute = true;
 		} else if (ActM == 2) {
 			musicIMG.sprite = MusicOn;
 			ActM = 1;
+			music.mute = false;
 		}
 		PlayerPrefs.SetInt ("ActM", ActM);
 		PlayerPrefs.Save ();
